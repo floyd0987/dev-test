@@ -10,13 +10,9 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Pull latest code
-        run: git pull origin staging
-
-      - name: Restart Docker containers
+      - name: Pull latest code in staging folder and restart
         run: |
+          cd /var/www/html/dev-test
+          git pull origin staging
           docker-compose down
           docker-compose up -d --build
