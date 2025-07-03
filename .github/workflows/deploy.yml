@@ -1,0 +1,17 @@
+name: Deploy to Local Staging Docker
+
+on:
+  push:
+    branches:
+      - staging
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Pull latest code in staging folder and restart
+        run: |
+          docker exec staging-test-web-1 git -C /var/www/html/dev-test pull origin staging
+          git pull origin staging
+         
