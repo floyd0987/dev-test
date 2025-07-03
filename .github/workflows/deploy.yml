@@ -12,6 +12,6 @@ jobs:
     steps:
       - name: Pull latest code in staging folder and restart
         run: |
-          cd /var/www/html/dev-test
+          docker exec staging-test-web-1 git -C /var/www/html/dev-test pull origin staging
           git pull origin staging
          
